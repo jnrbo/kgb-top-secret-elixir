@@ -19,8 +19,8 @@ defmodule KGB.MixProject do
 
   defp deps do
     [
-      {:meeseeks, "~> 0.15.1"},
-      {:httpoison, "~> 1.8"}
+      {:httpoison, "~> 1.8"},
+      {:floki, "~> 0.26.0"}
     ]
   end
 end
