@@ -1,21 +1,58 @@
-# KGB
+# A Dealer For the People
 
-**TODO: Add description**
+This is a secret project from KGB to analyze reviews from McKaig Chevrolet Buick - A Dealer For The People
 
-## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `kgb` to your list of dependencies in `mix.exs`:
+Requirements
+------------
 
-```elixir
-def deps do
-  [
-    {:kgb, "~> 0.1.0"}
-  ]
-end
+- Elixir 1.11.1
+
+Install
+------------
+
+To install all dependencies necessary to run the project, execute:
+
+```shell script
+mix deps.get
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/kgb](https://hexdocs.pm/kgb).
 
+Running the Scraper
+------------
+
+```shell script
+mix analyzes
+```
+
+
+Running Tests
+------------
+
+```shell script
+mix test
+```
+
+or to get coverage:
+```shell script
+mix coveralls.html
+```
+
+To open coverage just type ` open cover/excoveralls.html` 
+
+
+Overly Positive criteria
+------------
+To identify the most overly positive reviews, a score it's calculated based on how long is the review along with how many "overly positive" words it has.
+Each word has a weight that influences the score.
+
+Equation:
+
+![equation](equation.png)
+
+```text
+x = score
+n = number of occurrences of the word in text
+w = weight
+l = text length
+```

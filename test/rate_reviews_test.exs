@@ -7,8 +7,8 @@ defmodule KGB.RateReviewsTest do
   end
 
   test "calculates rate" do
-    assert KGB.RateReviews.calculate_rate("a amazing great incredible review") == 1.45
-    assert KGB.RateReviews.calculate_rate("a amazing incredible review") == 0.82
+    assert KGB.RateReviews.calculate_rate("a amazing great incredible review") == 1.4533
+    assert KGB.RateReviews.calculate_rate("a amazing incredible review") == 0.8216
     assert KGB.RateReviews.calculate_rate("nothing") == 0.0
   end
 

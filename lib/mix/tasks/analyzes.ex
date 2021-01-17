@@ -20,12 +20,11 @@ defmodule Mix.Tasks.Analyzes do
 
     tops = KGB.RateReviews.top_reviews(reviews)
 
-    IO.puts("Done.\n")
-
-
     IO.puts("TOP 3 REVIEWS:\n")
 
     KGB.RateReviews.show_ranking(tops)
+
+    IO.puts("Done.\n")
 
     IO.puts("\n..................................\n")
   end

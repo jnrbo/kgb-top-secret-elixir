@@ -38,6 +38,7 @@ defmodule KGB.RateReviews do
 
   def calculate_rate(text) do
     low_text = String.downcase(text)
+
     score =
       Enum.reduce(words(), 0.0, fn word, acc ->
         occurrences_rate(low_text, word) + acc
@@ -46,15 +47,18 @@ defmodule KGB.RateReviews do
     Float.round(score * :math.sqrt(String.length(text) * 0.1), 4)
   end
 
+  # coveralls-ignore-start
   def show_ranking(tops) do
     Enum.each(tops, fn rev ->
-      IO.puts "User: #{rev.user} (IP: #{ip()})"
-      IO.puts "Rate: #{rev.rate}"
-      IO.puts "Review: #{rev.review}\n\n"
+      IO.puts("User: #{rev.user} (IP: #{ip()})")
+      IO.puts("Rate: #{rev.rate}")
+      IO.puts("Review: #{rev.review}\n\n")
     end)
   end
 
   defp ip() do
     "#{Enum.random(1..255)}.#{Enum.random(0..255)}.#{Enum.random(0..255)}.#{Enum.random(0..255)}"
   end
+
+  # coveralls-ignore-stop
 end
