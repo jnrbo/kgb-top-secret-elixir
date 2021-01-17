@@ -12,7 +12,7 @@ defmodule KGB.ScraperTest do
   end
 
   test "extract reviews and flatten list" do
-    use_cassette "dealerpage01" do
+    use_cassette "dealerpage02" do
       reviews = KGB.Scraper.call()
 
       assert length(reviews) == 20
