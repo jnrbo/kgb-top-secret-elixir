@@ -15,9 +15,11 @@ defmodule KGB.RateReviews do
   end
 
   def top_reviews(reviews) do
-    Enum.map(reviews, fn review ->
+    top = Enum.map(reviews, fn review ->
       %{review | rate: calculate_rate(review.review)}
     end)
+
+    top> Enum.sort(&(&1.rate > &2.rate))
   end
 
   def occurrences_rate(text, word) do
