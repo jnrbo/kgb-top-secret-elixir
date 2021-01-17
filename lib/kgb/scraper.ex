@@ -2,8 +2,10 @@ require Logger
 
 defmodule KGB.Scraper do
   def call() do
+    range = 1..max_pages()
+
     reviews =
-      Enum.map(1..2, fn page ->
+      Enum.map(range, fn page ->
         page
         |> extract_reviews
       end)
@@ -19,7 +21,8 @@ defmodule KGB.Scraper do
       Enum.map(reviews, fn review ->
         %{
           review: review_text(review),
-          user: review_user(review)
+          user: review_user(review),
+          rate: 0.0
         }
       end)
     end
@@ -71,5 +74,9 @@ defmodule KGB.Scraper do
 
   defp filter do
     Application.fetch_env!(:kgb, :url_filter)
+  end
+
+  defp max_pages do
+    Application.fetch_env!(:kgb, :max_pages)
   end
 end
